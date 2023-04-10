@@ -1,7 +1,7 @@
 
 import streamlit as st
 import pandas as pd
-import seaborn as sns
+
 import matplotlib.pyplot as plt
 from streamlit_option_menu import option_menu
 import streamlit_vega_lite as st_vl
