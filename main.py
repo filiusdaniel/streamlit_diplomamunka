@@ -183,10 +183,10 @@ if selected=='Predictor':
                 title="<b>Price range according to the selected parameters</b>",
                 color_discrete_sequence=["#0083B8"] * len(df_osszevont['km._óra_állás']),
                 template="plotly_white",
-                width=100, height=350,
+                width=100, height=350
 
 
-            )
+            ).update_layout(xaxis_title="Mileage", yaxis_title="Price")
             #st.pyplot(fig)
             st.plotly_chart(fig_car_prices, use_container_width=True)
 
