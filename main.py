@@ -15,18 +15,18 @@ import pickle
 
 st.set_page_config(page_title="Price calculator", page_icon=":bar_chart:", layout="wide")
 
-@st.cache
+@st.cache_data
 def get_data_from_excel():
     dfsok = pd.read_csv(
         "Filled2.csv")
     return dfsok
 
-@st.cache
+@st.cache_data
 def get_column_names():
     columns = joblib.load("columns.sav")
     return columns
 
-@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def get_model():
     #rf=pickle.load(open("pima.pickle.dat", "rb"))
     rf = joblib.load("rf3.pkl")
