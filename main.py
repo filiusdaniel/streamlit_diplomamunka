@@ -125,7 +125,7 @@ if selected=='Predictor':
     options = st.sidebar.multiselect('What extras are included', keresett_extrak)
 
 
-    submit_button = st.sidebar.button(label='Predict',disabled=disable_state)
+    submit_button = st.button(label="Let's predict",disabled=disable_state)
 
     if submit_button:
         # Add a list of values in increments of 10 between the range of slider1_range
