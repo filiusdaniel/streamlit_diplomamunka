@@ -187,6 +187,9 @@ if selected=='Predictor':
 
 
             ).update_layout(xaxis_title="Mileage", yaxis_title="Price")
+
+            fig_car_prices.update_traces(mode="markers+lines", hovertemplate=None)
+            fig_car_prices.update_layout(hovermode="x")
             #st.pyplot(fig)
             st.plotly_chart(fig_car_prices, use_container_width=True)
 
