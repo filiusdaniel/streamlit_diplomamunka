@@ -111,9 +111,9 @@ if selected=='Predictor':
 
 
     if use_range:
-        slider2_range = st.sidebar.slider('Mileage Range', 0, 1000000, (0, 10000),1000)
+        slider2_range = st.sidebar.slider('Mileage Range', 0, 500000, (0, 10000),1000)
     else:
-        slider2 = st.sidebar.slider('Mileage', 0, 1000000, 0,1000)
+        slider2 = st.sidebar.slider('Mileage', 0, 500000, 0,1000)
 
     if marka != "" and tipus != '':
         disable_state = False
