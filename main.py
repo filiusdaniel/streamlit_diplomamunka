@@ -135,7 +135,7 @@ if selected=='Predictor':
         if use_range:
             # Create a dataframe with the values of the list as one column and the simple slider value in every row
 
-            slider1_list = list(range(slider2_range[0], slider2_range[1] + 1, 5000))
+            slider1_list = list(range(slider2_range[0], slider2_range[1] + 1, 10000))
 
             # Create a dataframe with the values of the list as one column and the simple slider value in every row
 
