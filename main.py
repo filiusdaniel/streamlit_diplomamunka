@@ -254,7 +254,7 @@ if selected == 'Dashboard':
     fuel = st.sidebar.multiselect(
         "Select the Fuel:",
         options=['Diesel','Petrol','Electric','Gas'],
-        default=sorted(dfsok["üzemanyag"].unique())
+        default=['Diesel','Petrol','Electric','Gas']
     )
     type = st.sidebar.multiselect(
         "Select the car type:",
