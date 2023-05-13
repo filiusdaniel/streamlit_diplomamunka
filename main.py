@@ -249,6 +249,16 @@ if selected == 'Dashboard':
         'Front-wheel drive':'Első kerék',
         'Rear-wheel drive': 'Hátsó kerék',
         'All-wheel drive': 'Összkerék',
+        'Cabrio':'Cabrio',
+        'Coupe':'Coupe',
+        'MPV':'Egyterű',
+        'Hatchback':'Ferdehátú',
+        'Estate':'Kombi',
+        'Sedan':['Sedan', 'Lépcsőshátú'],
+        'Pickup':'Pickup',
+        'Off-road':'Terepjáró',
+        'SUV':'Városi terepjáró (crossover)'
+
         # Add more translations as needed
     }
 
@@ -260,8 +270,8 @@ if selected == 'Dashboard':
     )
     type = st.sidebar.multiselect(
         "Select the car type:",
-        options=sorted(dfsok["kivitel"].unique()),
-        default=sorted(dfsok["kivitel"].unique()),
+        options=['Cabrio','Coupe','MPV','Hatchback','Estate','Sedan','Pickup','Off-road','SUV'],
+        default=['Cabrio','Coupe','MPV','Hatchback','Estate','Sedan','Pickup','Off-road','SUV'],
     )
     drive = st.sidebar.multiselect(
         "Select the car drive:",
@@ -270,10 +280,10 @@ if selected == 'Dashboard':
     )
     selected_fuel = [translation_dict.get(option, option) for option in fuel]
     selected_drive = [translation_dict.get(option, option) for option in drive]
-
+    selected_type = [translation_dict.get(option, option) for option in type]
     try:
         df_selection = dfsok.query(
-            " márka == @gyarto  & üzemanyag == @selected_fuel & kivitel ==@type & hajtás ==@selected_drive"
+            " márka == @gyarto  & üzemanyag == @selected_fuel & kivitel ==@selected_type & hajtás ==@selected_drive"
         )
 
 
