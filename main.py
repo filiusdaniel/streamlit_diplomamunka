@@ -246,7 +246,9 @@ if selected == 'Dashboard':
         'Petrol': 'Benzin',
         'Electric': 'Elektromos',
         'Gas': 'Gáz',
-
+        'Front-wheel drive':'Első kerék',
+        'Rear-wheel drive': 'Hátsó kerék',
+        'All-wheel drive': 'Összkerék',
         # Add more translations as needed
     }
 
@@ -263,10 +265,11 @@ if selected == 'Dashboard':
     )
     drive = st.sidebar.multiselect(
         "Select the car drive:",
-        options=sorted(dfsok["hajtás"].unique()),
-        default=sorted(dfsok["hajtás"].unique()),
+        options=['Front-wheel drive','Rear-wheel drive','All-wheel drive'],
+        default=['Front-wheel drive','Rear-wheel drive','All-wheel drive'],
     )
     selected_fuel = [translation_dict.get(option, option) for option in fuel]
+    selected_drive = [translation_dict.get(option, option) for option in drive]
 
     try:
         df_selection = dfsok.query(
