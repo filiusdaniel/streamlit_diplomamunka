@@ -253,7 +253,7 @@ if selected == 'Dashboard':
 
     fuel = st.sidebar.multiselect(
         "Select the Fuel:",
-        options=('Diesel,Petrol,Electric,Gas'),
+        options='Diesel,Petrol,Electric,Gas',
         default=sorted(dfsok["üzemanyag"].unique())
     )
     type = st.sidebar.multiselect(
