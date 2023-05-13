@@ -270,7 +270,7 @@ if selected == 'Dashboard':
 
     try:
         df_selection = dfsok.query(
-            " márka == @gyarto  & üzemanyag == @fuel & kivitel ==@type & hajtás ==@drive"
+            " márka == @gyarto  & üzemanyag == @selected_fuel & kivitel ==@type & hajtás ==@drive"
         )
 
 
