@@ -327,7 +327,11 @@ if selected == 'Dashboard':
             title="<b>Top 10 Manufacturer</b>",
             color_discrete_sequence=["#0083B8"] * len(sales_by_hour),
             template="plotly_white",
-            width=100, height=350
+            width=100, height=350,
+            labels={
+                "márka": "Brand"
+
+            }
         )
         fig_hourly_sales.update_layout(
             xaxis=dict(tickmode="linear"),
@@ -345,7 +349,11 @@ if selected == 'Dashboard':
             title="<b>Average price by year</b>",
             color_discrete_sequence=["#0083B8"] * len(sales_by_hour),
             template="plotly_white",
-            width=100, height=350
+            width=100, height=350,
+            labels={
+                "évjárat": "Year"
+
+            }
         )
         fig_yearly_price.update_layout(
             xaxis=dict(tickmode="linear"),
