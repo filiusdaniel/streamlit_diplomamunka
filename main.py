@@ -265,6 +265,7 @@ if selected == 'Dashboard':
             " márka == @gyarto  & üzemanyag == @fuel & kivitel ==@type & hajtás ==@drive"
         )
 
+
         st.markdown("##")
 
         average_price = int(round(df_selection["vételár"].mean(), 0))
@@ -301,7 +302,11 @@ if selected == 'Dashboard':
             title="<b>Yearly distribution of advertised cars</b>",
             color_discrete_sequence=["#0083B8"] * len(sales_by_product_line),
             template="plotly_white",
-            width=100, height=350
+            width=100, height=350,
+            labels={
+                     "évjárat": "Year"
+
+                 }
 
         )
         fig_product_sales.update_layout(
