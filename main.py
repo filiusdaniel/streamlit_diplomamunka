@@ -241,12 +241,19 @@ if selected == 'Dashboard':
             options=sorted(dfsok["márka"].unique()),
             default=sorted(dfsok["márka"].explode().value_counts().index[:10].tolist())
         )
+    translation_dict = {
+        'Diesel': 'Dízel',
+        'Petrol': 'Benzin',
+        'Electric': 'Elektromos',
+        'Gas': 'Gáz',
 
+        # Add more translations as needed
+    }
 
 
     fuel = st.sidebar.multiselect(
         "Select the Fuel:",
-        options=sorted(dfsok["üzemanyag"].unique()),
+        options=('Diesel,Petrol,Electric,Gas'),
         default=sorted(dfsok["üzemanyag"].unique())
     )
     type = st.sidebar.multiselect(
@@ -259,6 +266,7 @@ if selected == 'Dashboard':
         options=sorted(dfsok["hajtás"].unique()),
         default=sorted(dfsok["hajtás"].unique()),
     )
+    selected_fuel = [translation_dict.get(option, option) for option in fuel]
 
     try:
         df_selection = dfsok.query(
