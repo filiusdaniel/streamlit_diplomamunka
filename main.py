@@ -107,7 +107,7 @@ if selected=='Predictor':
         valto = 1
 
     suly = st.sidebar.slider('Weight', 0, 5000, 0)
-    use_range = st.sidebar.checkbox('Use a range of values for Slider 2')
+    use_range = st.sidebar.checkbox('Use a range of milage')
 
 
     if use_range:
