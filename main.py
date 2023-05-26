@@ -37,6 +37,32 @@ columns=get_column_names()
 dfsok = get_data_from_excel()
 rf=get_model()
 
+translation_dict = {
+        'Diesel': 'Dízel',
+        'Petrol': 'Benzin',
+        'Electric': 'Elektromos',
+        'Gas': 'Gáz',
+        'Front-wheel drive':'Első kerék',
+        'Rear-wheel drive': 'Hátsó kerék',
+        'All-wheel drive': 'Összkerék',
+        'Cabrio':'Cabrio',
+        'Coupe':'Coupe',
+        'MPV':'Egyterű',
+        'Hatchback':'Ferdehátú',
+        'Estate':'Kombi',
+        'Sedan':['Sedan', 'Lépcsőshátú'],
+        'Pickup':'Pickup',
+        'Off-road':'Terepjáró',
+        'SUV':'Városi terepjáró (crossover)',
+        'Excellent':'Kitűnő',
+        'Well-maintained':'Megkímélt',
+        'Normal':'Normal',
+        'Undamaged':'Sérülésmente',
+        'Like new':'Újszerű'
+
+        # Add more translations as needed
+    }
+
 def predict(df2):
     df2['concat'] = df2['márka'] + df2['típus']
     df2.drop([ 'márka', 'típus'], axis=1, inplace=True)
@@ -90,16 +116,15 @@ if selected=='Predictor':
     markak=sorted(dfsok["márka"].unique().tolist())
     marka = st.sidebar.selectbox('Select car maker', (markak))
     tipusok = sorted(list(set(dfsok["típus"].loc[dfsok["márka"] == marka])))
-    tipus = st.sidebar.selectbox('Select car type', (tipusok))
+    tipus_select = st.sidebar.selectbox('Select car type', (tipusok))
     slider1_range = st.sidebar.slider('Year', 1990, 2021, 2000)
     teljesitmeny = st.sidebar.slider('Power', 0, 500, 0)
     hengerurtartalom = st.sidebar.slider('Cylinder capacity', 0, 5000, 0)
-    uzemanyag = st.sidebar.selectbox('Fuel type', options=['Benzin', 'Dízel', 'Elektromos', 'Gáz', 'Hibrid'])
+    uzemanyag_select = st.sidebar.selectbox('Fuel type', options=['Diesel','Petrol','Electric','Gas'])
     Kivitel = st.sidebar.selectbox('Design',
-                                   options=['Cabrio', 'Coupe', 'Egyterű', 'Ferdehátú', 'Kisbusz', 'Kombi', 'Pickup',
-                                            'Sedan', 'Terepjáró', 'Városi terepjáró'])
-    allapot = st.sidebar.selectbox('Condition', options=['Kitűnő', 'Megkímélt', 'Normál', 'Sérülésmentes', 'Újszerű'])
-    hajtas = st.sidebar.selectbox('Drive', options=['Front wheel drive', 'Rear wheel drive', 'All wheel drive'])
+                                   options=['Cabrio','Coupe','MPV','Hatchback','Estate','Sedan','Pickup','Off-road','SUV'])
+    allapot_select = st.sidebar.selectbox('Condition', options=['Excellent', 'Well-maintained', 'Normal', 'Undamaged', 'Like new'])
+    drive_select = st.sidebar.selectbox('Drive', options=['Front-wheel drive','Rear-wheel drive','All-wheel drive'])
     valto_input = st.sidebar.selectbox('Select gearbox type', options=['manual', 'automatic'])
     if valto_input == 'manual':
         valto = 0
@@ -122,8 +147,15 @@ if selected=='Predictor':
 
     keresett_extrak=["tolatóradar","USB","GPS",'tempomat','sávtartó rendszer','fűthető első ülés','tolatókamera','kulcsnélküli indítás','multifunkciós kormánykerék',
                      'távolságtartó tempomat','esőszenzor','Apple CarPlay','Android Auto','bluetooth-os kihangosító']
+
+
     options = st.sidebar.multiselect('What extras are included', keresett_extrak)
 
+
+    uzemanyag = [translation_dict.get(option, option) for option in uzemanyag_select]
+    hajtas = [translation_dict.get(option, option) for option in drive_select]
+    tipus = [translation_dict.get(option, option) for option in tipus_select]
+    allapot=[translation_dict.get(option, option) for option in allapot_select]
 
     submit_button = st.button(label="Let's predict",disabled=disable_state)
 
@@ -241,26 +273,7 @@ if selected == 'Dashboard':
             options=sorted(dfsok["márka"].unique()),
             default=sorted(dfsok["márka"].explode().value_counts().index[:10].tolist())
         )
-    translation_dict = {
-        'Diesel': 'Dízel',
-        'Petrol': 'Benzin',
-        'Electric': 'Elektromos',
-        'Gas': 'Gáz',
-        'Front-wheel drive':'Első kerék',
-        'Rear-wheel drive': 'Hátsó kerék',
-        'All-wheel drive': 'Összkerék',
-        'Cabrio':'Cabrio',
-        'Coupe':'Coupe',
-        'MPV':'Egyterű',
-        'Hatchback':'Ferdehátú',
-        'Estate':'Kombi',
-        'Sedan':['Sedan', 'Lépcsőshátú'],
-        'Pickup':'Pickup',
-        'Off-road':'Terepjáró',
-        'SUV':'Városi terepjáró (crossover)'
 
-        # Add more translations as needed
-    }
 
 
     fuel = st.sidebar.multiselect(
