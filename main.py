@@ -159,7 +159,7 @@ if selected=='Predictor':
         disable_state = True
 
     keresett_extrak=["tolatóradar","USB","GPS",'tempomat','sávtartó rendszer','fűthető első ülés','tolatókamera','kulcsnélküli indítás','multifunkciós kormánykerék',
-                     'távolságtartó tempomat','esőszenzor','Apple CarPlay','Android Auto','bluetooth-os kihangosító']
+                     'távolságtartó tempomat','esőszenzor','Apple CarPlay','Android Auto','bluetooth-os kihangosító','klíma_fajtája3']
 
     desired_extras = [
         'Parking sensor',
@@ -188,7 +188,7 @@ if selected=='Predictor':
     Kivitel = translation_dict.get(Kivitel_select)
     allapot=translation_dict.get(allapot_select)
     options = [translation_dict.get(option, option) for option in options_selected]
-
+    st.write(options)
     submit_button = st.button(label="Let's predict",disabled=disable_state)
 
     if submit_button:
