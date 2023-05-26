@@ -116,12 +116,12 @@ if selected=='Predictor':
     markak=sorted(dfsok["márka"].unique().tolist())
     marka = st.sidebar.selectbox('Select car maker', (markak))
     tipusok = sorted(list(set(dfsok["típus"].loc[dfsok["márka"] == marka])))
-    tipus_select = st.sidebar.selectbox('Select car type', (tipusok))
+    tipus = st.sidebar.selectbox('Select car type', (tipusok))
     slider1_range = st.sidebar.slider('Year', 1990, 2021, 2000)
     teljesitmeny = st.sidebar.slider('Power', 0, 500, 0)
     hengerurtartalom = st.sidebar.slider('Cylinder capacity', 0, 5000, 0)
     uzemanyag_select = st.sidebar.selectbox('Fuel type', options=['Diesel','Petrol','Electric','Gas'])
-    Kivitel = st.sidebar.selectbox('Design',
+    Kivitel_select = st.sidebar.selectbox('Design',
                                    options=['Cabrio','Coupe','MPV','Hatchback','Estate','Sedan','Pickup','Off-road','SUV'])
     allapot_select = st.sidebar.selectbox('Condition', options=['Excellent', 'Well-maintained', 'Normal', 'Undamaged', 'Like new'])
     drive_select = st.sidebar.selectbox('Drive', options=['Front-wheel drive','Rear-wheel drive','All-wheel drive'])
@@ -154,7 +154,7 @@ if selected=='Predictor':
 
     uzemanyag = [translation_dict.get(option, option) for option in uzemanyag_select]
     hajtas = [translation_dict.get(option, option) for option in drive_select]
-    tipus = [translation_dict.get(option, option) for option in tipus_select]
+    Kivitel = [translation_dict.get(option, option) for option in Kivitel_select]
     allapot=[translation_dict.get(option, option) for option in allapot_select]
 
     submit_button = st.button(label="Let's predict",disabled=disable_state)
