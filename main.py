@@ -156,6 +156,9 @@ if selected=='Predictor':
     hajtas = [translation_dict.get(option, option) for option in drive_select]
     Kivitel = [translation_dict.get(option, option) for option in Kivitel_select]
     allapot=[translation_dict.get(option, option) for option in allapot_select]
+    st.write(uzemanyag)
+    st.write(Kivitel)
+    st.write(allapot)
 
     submit_button = st.button(label="Let's predict",disabled=disable_state)
 
