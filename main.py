@@ -175,7 +175,8 @@ if selected=='Predictor':
         'Rain sensor',
         'Apple CarPlay',
         'Android Auto',
-        'Bluetooth hands-free'
+        'Bluetooth hands-free',
+        'air conditioning'
     ]
 
 
@@ -287,7 +288,7 @@ if selected=='Predictor':
             #st.write(kinyert_extra)
             df_extra=pd.DataFrame(data=[kinyert_extra],columns=keresett_extrak)
             df_osszevont=df.join(df_extra,how='left')
-            #st.write(df_osszevont)
+            st.write(df_osszevont)
             ár = int(round((predict(df_osszevont))[0],0))
             #st.write(ár)
             #predicted2=predict(df_osszevont)
