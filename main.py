@@ -72,7 +72,8 @@ translation_dict = {
     'esőszenzor': 'Rain sensor',
     'Apple CarPlay': 'Apple CarPlay',
     'Android Auto': 'Android Auto',
-    'bluetooth-os kihangosító': 'Bluetooth hands-free'
+    'bluetooth-os kihangosító': 'Bluetooth hands-free',
+    'air conditioning':'klíma_fajtája3'
 }
 
 def predict(df2):
