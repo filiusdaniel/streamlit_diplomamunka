@@ -188,7 +188,7 @@ if selected=='Predictor':
     Kivitel = translation_dict.get(Kivitel_select)
     allapot=translation_dict.get(allapot_select)
     options = [translation_dict.get(option, option) for option in options_selected]
-    st.write(options)
+
     submit_button = st.button(label="Let's predict",disabled=disable_state)
 
     if submit_button:
@@ -288,7 +288,7 @@ if selected=='Predictor':
             #st.write(kinyert_extra)
             df_extra=pd.DataFrame(data=[kinyert_extra],columns=keresett_extrak)
             df_osszevont=df.join(df_extra,how='left')
-            st.write(df_osszevont)
+            #st.write(df_osszevont)
             ár = int(round((predict(df_osszevont))[0],0))
             #st.write(ár)
             #predicted2=predict(df_osszevont)
