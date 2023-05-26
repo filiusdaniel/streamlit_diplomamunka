@@ -38,30 +38,42 @@ dfsok = get_data_from_excel()
 rf=get_model()
 
 translation_dict = {
-        'Diesel': 'Dízel',
-        'Petrol': 'Benzin',
-        'Electric': 'Elektromos',
-        'Gas': 'Gáz',
-        'Front-wheel drive':'Első kerék',
-        'Rear-wheel drive': 'Hátsó kerék',
-        'All-wheel drive': 'Összkerék',
-        'Cabrio':'Cabrio',
-        'Coupe':'Coupe',
-        'MPV':'Egyterű',
-        'Hatchback':'Ferdehátú',
-        'Estate':'Kombi',
-        'Sedan':['Sedan', 'Lépcsőshátú'],
-        'Pickup':'Pickup',
-        'Off-road':'Terepjáró',
-        'SUV':'Városi terepjáró (crossover)',
-        'Excellent':'Kitűnő',
-        'Well-maintained':'Megkímélt',
-        'Normal':'Normal',
-        'Undamaged':'Sérülésmente',
-        'Like new':'Újszerű'
-
-        # Add more translations as needed
-    }
+    'Diesel': 'Dízel',
+    'Petrol': 'Benzin',
+    'Electric': 'Elektromos',
+    'Gas': 'Gáz',
+    'Front-wheel drive': 'Első kerék',
+    'Rear-wheel drive': 'Hátsó kerék',
+    'All-wheel drive': 'Összkerék',
+    'Cabrio': 'Cabrio',
+    'Coupe': 'Coupe',
+    'MPV': 'Egyterű',
+    'Hatchback': 'Ferdehátú',
+    'Estate': 'Kombi',
+    'Sedan': ['Sedan', 'Lépcsőshátú'],
+    'Pickup': 'Pickup',
+    'Off-road': 'Terepjáró',
+    'SUV': 'Városi terepjáró (crossover)',
+    'Excellent': 'Kitűnő',
+    'Well-maintained': 'Megkímélt',
+    'Normal': 'Normal',
+    'Undamaged': 'Sérülésmente',
+    'Like new': 'Újszerű',
+    'tolatóradar': 'Parking sensor',
+    'USB': 'USB',
+    'GPS': 'GPS',
+    'tempomat': 'Cruise control',
+    'sávtartó rendszer': 'Lane keeping assist',
+    'fűthető első ülés': 'Heated front seats',
+    'tolatókamera': 'Reverse camera',
+    'kulcsnélküli indítás': 'Keyless start',
+    'multifunkciós kormánykerék': 'Multifunction steering wheel',
+    'távolságtartó tempomat': 'Adaptive cruise control',
+    'esőszenzor': 'Rain sensor',
+    'Apple CarPlay': 'Apple CarPlay',
+    'Android Auto': 'Android Auto',
+    'bluetooth-os kihangosító': 'Bluetooth hands-free'
+}
 
 def predict(df2):
     df2['concat'] = df2['márka'] + df2['típus']
@@ -148,15 +160,32 @@ if selected=='Predictor':
     keresett_extrak=["tolatóradar","USB","GPS",'tempomat','sávtartó rendszer','fűthető első ülés','tolatókamera','kulcsnélküli indítás','multifunkciós kormánykerék',
                      'távolságtartó tempomat','esőszenzor','Apple CarPlay','Android Auto','bluetooth-os kihangosító']
 
+    desired_extras = [
+        'Parking sensor',
+        'USB',
+        'GPS',
+        'Cruise control',
+        'Lane keeping assist',
+        'Heated front seats',
+        'Reverse camera',
+        'Keyless start',
+        'Multifunction steering wheel',
+        'Adaptive cruise control',
+        'Rain sensor',
+        'Apple CarPlay',
+        'Android Auto',
+        'Bluetooth hands-free'
+    ]
 
-    options = st.sidebar.multiselect('What extras are included', keresett_extrak)
+
+    options_selected = st.sidebar.multiselect('What extras are included', desired_extras)
 
 
     uzemanyag =  translation_dict.get(uzemanyag_select)
     hajtas = translation_dict.get(drive_select)
     Kivitel = translation_dict.get(Kivitel_select)
     allapot=translation_dict.get(allapot_select)
-
+    options = [translation_dict.get(option, option) for option in options_selected]
 
     submit_button = st.button(label="Let's predict",disabled=disable_state)
 
