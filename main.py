@@ -152,14 +152,11 @@ if selected=='Predictor':
     options = st.sidebar.multiselect('What extras are included', keresett_extrak)
 
 
-    uzemanyag = [translation_dict.get(option, option) for option in uzemanyag_select]
-    hajtas = [translation_dict.get(option, option) for option in drive_select]
-    Kivitel = [translation_dict.get(option, option) for option in Kivitel_select]
-    allapot=[translation_dict.get(option, option) for option in allapot_select]
-    st.write(translation_dict.get(drive_select))
-    st.write(uzemanyag_select)
-    st.write(Kivitel)
-    st.write(allapot)
+    uzemanyag =  translation_dict.get(uzemanyag_select)
+    hajtas = translation_dict.get(drive_select)
+    Kivitel = translation_dict.get(Kivitel_select)
+    allapot=translation_dict.get(allapot_select)
+
 
     submit_button = st.button(label="Let's predict",disabled=disable_state)
 
