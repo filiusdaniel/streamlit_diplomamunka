@@ -156,6 +156,7 @@ if selected=='Predictor':
     hajtas = [translation_dict.get(option, option) for option in drive_select]
     Kivitel = [translation_dict.get(option, option) for option in Kivitel_select]
     allapot=[translation_dict.get(option, option) for option in allapot_select]
+    st.write(translation_dict.get(drive_select))
     st.write(uzemanyag_select)
     st.write(Kivitel)
     st.write(allapot)
