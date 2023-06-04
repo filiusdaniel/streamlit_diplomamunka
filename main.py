@@ -39,6 +39,7 @@ rf=get_model()
 
 temp =dfsok['típus'].value_counts()>10
 dfsok=dfsok[dfsok['típus'].isin(temp[temp].index.get_level_values(0).values)]
+st.write(dfsok['típus'])
 
 translation_dict = {
     'Diesel': 'Dízel',
@@ -107,25 +108,25 @@ selected=option_menu(
 )
 
 
-car_makers = {
-    'Toyota': ['Corolla', 'Camry', 'RAV4', 'Highlander', 'Sienna'],
-    'Honda': ['Civic', 'Accord', 'CR-V', 'Pilot', 'Odyssey'],
-    'Nissan': ['Altima', 'Sentra', 'Maxima', 'Rogue', 'Pathfinder'],
-    'Ford': ['F-150', 'Mustang', 'Escape', 'Explorer', 'Expedition']
-}
+#car_makers = {
+#    'Toyota': ['Corolla', 'Camry', 'RAV4', 'Highlander', 'Sienna'],
+#    'Honda': ['Civic', 'Accord', 'CR-V', 'Pilot', 'Odyssey'],
+#    'Nissan': ['Altima', 'Sentra', 'Maxima', 'Rogue', 'Pathfinder'],
+#    'Ford': ['F-150', 'Mustang', 'Escape', 'Explorer', 'Expedition']
+#}
 
 # Create an empty DataFrame with columns 'Car Maker' and 'Car Model'
-df2 = pd.DataFrame(columns=['Car Maker', 'Car Model'])
+#df2 = pd.DataFrame(columns=['Car Maker', 'Car Model'])
 
 # Loop through the car makers and their car models, and add them to the DataFrame
-for maker, models in car_makers.items():
-    for model in models:
+#for maker, models in car_makers.items():
+ #   for model in models:
         # Add the example to the DataFrame
-        df2 = df2.append({'Car Maker': maker, 'Car Model': model}, ignore_index=True)
+  #      df2 = df2.append({'Car Maker': maker, 'Car Model': model}, ignore_index=True)
 
 kinyert_adat = []
 kinyert_extra=[]
-markak=df2['Car Maker'].unique().tolist()
+#markak=df2['Car Maker'].unique().tolist()
 
 if selected=='Predictor':
     st.title("Car price predictor")
