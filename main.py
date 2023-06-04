@@ -39,7 +39,7 @@ rf=get_model()
 
 temp =dfsok['típus'].value_counts()>10
 dfsok=dfsok[dfsok['típus'].isin(temp[temp].index.get_level_values(0).values)]
-st.write(dfsok['márka'])
+st.write(dfsok['márka'].unique())
 
 translation_dict = {
     'Diesel': 'Dízel',
