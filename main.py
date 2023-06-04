@@ -40,7 +40,8 @@ rf=get_model()
 counts = dfsok.groupby('típus').size()
 to_keep = counts[counts >= 20].index
 dfsok = dfsok[dfsok['típus'].isin(to_keep)]
-st.write(dfsok['márka'].unique())
+dfsok2=dfsok.drop(dfsok[dfsok['vételár']>11000000].index)
+#st.write(dfsok['márka'].unique())
 
 translation_dict = {
     'Diesel': 'Dízel',
@@ -131,9 +132,9 @@ kinyert_extra=[]
 
 if selected=='Predictor':
     st.title("Car price predictor")
-    markak=sorted(dfsok["márka"].unique().tolist())
+    markak=sorted(dfsok2["márka"].unique().tolist())
     marka = st.sidebar.selectbox('Select car maker', (markak))
-    tipusok = sorted(list(set(dfsok["típus"].loc[dfsok["márka"] == marka])))
+    tipusok = sorted(list(set(dfsok2["típus"].loc[dfsok2["márka"] == marka])))
     tipus = st.sidebar.selectbox('Select car type', (tipusok))
     slider1_range = st.sidebar.slider('Year', 1990, 2021, 2000)
     teljesitmeny = st.sidebar.slider('Power', 0, 500, 0)
