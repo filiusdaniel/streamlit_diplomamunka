@@ -37,10 +37,11 @@ columns=get_column_names()
 dfsok = get_data_from_excel()
 rf=get_model()
 
-counts = dfsok.groupby('típus').size()
-to_keep = counts[counts >= 20].index
-dfsok = dfsok[dfsok['típus'].isin(to_keep)]
+
 dfsok2=dfsok.drop(dfsok[dfsok['vételár']>11000000].index)
+counts = dfsok2.groupby('típus').size()
+to_keep = counts[counts >= 20].index
+dfsok2 = dfsok2[dfsok2['típus'].isin(to_keep)]
 #st.write(dfsok['márka'].unique())
 
 translation_dict = {
