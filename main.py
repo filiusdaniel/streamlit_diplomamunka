@@ -37,8 +37,9 @@ columns=get_column_names()
 dfsok = get_data_from_excel()
 rf=get_model()
 
-temp =dfsok['típus'].value_counts()>10
-dfsok=dfsok[dfsok['típus'].isin(temp[temp].index.get_level_values(0).values)]
+counts = dfsok.groupby('típus').size()
+to_keep = counts[counts >= 20].index
+dfsok = dfsok[dfsok['típus'].isin(to_keep)]
 st.write(dfsok['márka'].unique())
 
 translation_dict = {
