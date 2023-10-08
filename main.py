@@ -192,7 +192,7 @@ if selected=='Predictor':
 
     uzemanyag =  translation_dict.get(uzemanyag_select)
     hajtas = translation_dict.get(drive_select)
-    Kivitel = translation_dict.get(Kivitel_select)
+    Kivitel = translation_dict.get(Kivitel_select[0])
     allapot=translation_dict.get(allapot_select)
     options = [translation_dict.get(option, option) for option in options_selected]
 
