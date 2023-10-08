@@ -57,7 +57,7 @@ translation_dict = {
     'MPV': 'Egyterű',
     'Hatchback': 'Ferdehátú',
     'Estate': 'Kombi',
-    'Sedan': ['Sedan', 'Lépcsőshátú'],
+    'Sedan': 'Sedan',
     'Pickup': 'Pickup',
     'Off-road': 'Terepjáró',
     'SUV': 'Városi terepjáró (crossover)',
@@ -192,7 +192,7 @@ if selected=='Predictor':
 
     uzemanyag =  translation_dict.get(uzemanyag_select)
     hajtas = translation_dict.get(drive_select)
-    Kivitel = translation_dict.get(Kivitel_select[0])
+    Kivitel = translation_dict.get(Kivitel_select)
     allapot=translation_dict.get(allapot_select)
     options = [translation_dict.get(option, option) for option in options_selected]
 
